@@ -157,7 +157,7 @@
   .alerts-header:hover { background: var(--cream); }
   .alerts-header-left { display: flex; align-items: center; gap: 8px; }
   .alerts-icon { font-size: 13px; }
-  .alerts-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; font-style: italic; }
+  .alerts-title { font-family: var(--font-body); font-size: 14px; font-weight: 700; }
   .alert-count-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; }
   .alert-count-badge.danger { background: var(--danger-bg); color: var(--danger-text); border: 1px solid rgba(192,57,43,0.15); }
   .alert-count-badge.none { background: var(--success-bg); color: var(--success); border: 1px solid rgba(39,174,96,0.15); }
@@ -184,26 +184,35 @@
 
   /* ══════════ CURRENT CONDITIONS ══════════ */
   .conditions-strip {
-    display: flex; align-items: center; justify-content: center;
-    flex-wrap: wrap; gap: 6px 20px;
-    padding: 10px 20px; background: var(--teal); color: var(--white);
+    display: flex; align-items: stretch; justify-content: center;
+    flex-wrap: wrap; gap: 0;
+    padding: 0; background: var(--white);
     border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
-    font-size: 13px; font-weight: 600; min-height: 42px;
+    min-height: 60px;
   }
-  .conditions-strip .cond-label { opacity: 0.7; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 2px; }
-  .conditions-strip .cond-val { font-family: var(--font-mono); font-weight: 600; font-size: 14px; }
-  .conditions-strip .cond-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.3); }
-  .conditions-strip .cond-city {
-    font-family: var(--font-display); font-weight: 700; font-style: italic;
-    font-size: 14px; margin-right: 4px;
+  .cond-item {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 10px 16px; flex: 1; min-width: 80px; gap: 2px;
+    border-right: 1px solid var(--border-light);
   }
-  .conditions-loading { font-size: 12px; opacity: 0.7; }
+  .cond-item:last-child { border-right: none; }
+  .cond-item.cond-city-item {
+    background: var(--white); color: var(--ink); min-width: 110px; flex: 0 0 auto;
+    padding: 10px 20px;
+  }
+  .cond-item.cond-city-item .cond-top { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cond-item.cond-city-item .cond-bottom { font-family: var(--font-body); font-weight: 700; font-size: 16px; }
+  .cond-item.cond-desc-item { flex: 1.5; }
+  .cond-top { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; }
+  .cond-bottom { font-family: var(--font-mono); font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.2; }
+  .cond-bottom-desc { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+  .conditions-loading { font-size: 12px; color: var(--text-muted); padding: 16px; text-align: center; width: 100%; }
 
   /* ══════════ FORECAST ══════════ */
   .forecast-section { border-top: 2px solid var(--ink); }
   .forecast-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 10px; flex-wrap: wrap; gap: 8px; }
   .forecast-header-left { display: flex; align-items: baseline; gap: 10px; }
-  .forecast-title { font-family: var(--font-display); font-size: 18px; font-weight: 800; font-style: italic; }
+  .forecast-title { font-family: var(--font-body); font-size: 18px; font-weight: 700; }
   .forecast-via { font-size: 10px; color: var(--text-muted); font-weight: 500; }
   .city-select-wrapper { position: relative; }
   .city-select {
@@ -218,12 +227,12 @@
   .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; padding: 0 12px 14px; min-height: 180px; }
   .forecast-day { text-align: center; padding: 10px 4px 8px; cursor: pointer; transition: background 0.12s; border: 1px solid transparent; position: relative; }
   .forecast-day:hover { background: var(--cream); border-color: var(--border-light); }
-  .forecast-day.today { background: var(--teal-light); border-color: var(--teal); }
+  .forecast-day.selected { background: var(--teal-light); border-color: var(--teal); }
   .forecast-day-name { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
-  .forecast-day.today .forecast-day-name { color: var(--teal-dark); }
+  .forecast-day.selected .forecast-day-name { color: var(--teal-dark); }
   .forecast-icon-wrap { width: 38px; height: 38px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 26px; line-height: 1; }
   .forecast-temps { display: flex; justify-content: center; align-items: baseline; gap: 3px; margin-bottom: 3px; }
-  .forecast-high { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .forecast-high { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1; }
   .forecast-low { font-size: 13px; font-weight: 600; color: var(--text-muted); line-height: 1; }
   .forecast-desc { font-size: 10px; color: var(--text-secondary); line-height: 1.3; font-weight: 500; max-height: 2.6em; overflow: hidden; }
   .forecast-precip { font-family: var(--font-mono); font-size: 9px; color: var(--teal-dark); font-weight: 600; margin-top: 2px; }
@@ -234,7 +243,7 @@
     padding: 14px 18px; font-size: 13px; color: var(--ink-light); line-height: 1.6;
     animation: slideDown 0.2s ease;
   }
-  .forecast-detail-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 6px; font-style: italic; color: var(--ink); }
+  .forecast-detail-title { font-family: var(--font-body); font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
   .forecast-detail-close { float: right; background: none; border: 1px solid var(--border); padding: 2px 8px; font-size: 11px; cursor: pointer; color: var(--text-muted); font-weight: 600; }
   .forecast-detail-close:hover { background: var(--white); color: var(--ink); }
   @keyframes slideDown { from { opacity: 0; max-height: 0; } to { opacity: 1; max-height: 300px; } }
@@ -244,6 +253,111 @@
   .forecast-loading-text { font-size: 12px; color: var(--text-muted); font-weight: 600; }
   .forecast-error { grid-column: 1 / -1; text-align: center; padding: 30px 0; font-size: 12px; color: var(--text-muted); }
   .forecast-error a { color: var(--teal-dark); font-weight: 600; text-decoration: none; }
+
+  /* ══════════ FORECAST CHARTS TABS ══════════ */
+  .forecast-charts {
+    border-top: 1px solid var(--border-light);
+    background: var(--white);
+  }
+  .chart-tabs {
+    display: flex; gap: 0; padding: 0 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .chart-tab {
+    font-family: var(--font-body); font-size: 12px; font-weight: 600;
+    color: var(--text-muted); background: none; border: none;
+    padding: 10px 16px; cursor: pointer; position: relative;
+    transition: color 0.15s; letter-spacing: 0.02em;
+  }
+  .chart-tab:hover { color: var(--ink); }
+  .chart-tab.active { color: var(--teal-dark); }
+  .chart-tab.active::after {
+    content: ''; position: absolute; bottom: -1px; left: 12px; right: 12px;
+    height: 2px; background: var(--teal); border-radius: 1px;
+  }
+  .chart-panel { display: none; padding: 16px 20px 14px; }
+  .chart-panel.active { display: block; }
+  .chart-bar-row {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    align-items: end; min-height: 80px;
+  }
+  .chart-bar-col { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .chart-bar-label {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    color: var(--ink); line-height: 1;
+  }
+  .chart-bar-wrap {
+    width: 100%; display: flex; justify-content: center;
+    height: 60px; align-items: flex-end;
+  }
+  .chart-bar {
+    width: 70%; max-width: 40px; border-radius: 3px 3px 0 0;
+    min-height: 3px; transition: height 0.3s ease;
+  }
+  .chart-bar.precip { background: linear-gradient(to top, #3b82f6, #93c5fd); }
+  .chart-bar.humidity { background: linear-gradient(to top, #6366f1, #a5b4fc); }
+  .chart-bar.wind { background: linear-gradient(to top, var(--teal-dark), #86efac); }
+  .chart-bar-day {
+    font-size: 9px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em; line-height: 1;
+  }
+  .chart-bar-sub {
+    font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+    color: var(--teal-dark); line-height: 1;
+  }
+  .chart-empty {
+    text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted);
+  }
+
+  /* ══════════ HISTORICAL CLIMATE ══════════ */
+  .climate-section { border-top: 2px solid var(--ink); background: var(--white); }
+  .climate-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 20px; cursor: pointer; user-select: none; transition: background 0.12s;
+  }
+  .climate-header:hover { background: var(--cream); }
+  .climate-header-left { display: flex; align-items: center; gap: 8px; }
+  .climate-title { font-family: var(--font-body); font-size: 14px; font-weight: 700; }
+  .climate-badge {
+    font-family: var(--font-mono); font-size: 9px; font-weight: 600; color: var(--text-muted);
+    background: var(--cream); padding: 2px 8px; border-radius: 3px; border: 1px solid var(--border-light);
+  }
+  .climate-body { display: none; padding: 0 20px 16px; border-top: 1px solid var(--border-light); }
+  .climate-body.open { display: block; }
+  .climate-body.open { display: block; }
+  .climate-records {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    padding: 16px 0 14px;
+  }
+  .climate-record-card {
+    text-align: center; padding: 14px 8px; border-radius: 6px; border: 1px solid var(--border-light);
+  }
+  .record-hot { background: linear-gradient(to bottom, #fff5f5, var(--white)); border-color: #fecaca; }
+  .record-cold { background: linear-gradient(to bottom, #eff6ff, var(--white)); border-color: #bfdbfe; }
+  .record-avg { background: linear-gradient(to bottom, var(--teal-light), var(--white)); border-color: #a7f3d0; }
+  .record-icon { font-size: 22px; margin-bottom: 4px; }
+  .record-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .record-value { font-family: var(--font-mono); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .record-detail { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+  .climate-normals-title {
+    font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 10px; padding-top: 4px;
+    border-top: 1px solid var(--border-light);
+  }
+  .climate-normals-grid {
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px;
+  }
+  .climate-month {
+    text-align: center; padding: 6px 2px; border-radius: 4px;
+    border: 1px solid var(--border-light); background: var(--cream);
+  }
+  .climate-month-name { font-size: 9px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .climate-month-high { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #dc2626; line-height: 1.4; }
+  .climate-month-low { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: #2563eb; line-height: 1.3; }
+  .climate-source {
+    font-size: 10px; color: var(--text-muted); margin-top: 10px; padding-top: 8px;
+    border-top: 1px solid var(--border-light);
+  }
+  .climate-source a { color: var(--teal-dark); text-decoration: none; font-weight: 600; }
 
   /* ══════════ FOOTER ══════════ */
   .widget-footer {
@@ -275,11 +389,23 @@
     .forecast-low { font-size: 11px; }
     .forecast-desc { display: none; }
     .forecast-header { padding: 12px 14px 8px; }
-    .conditions-strip { gap: 4px 12px; padding: 8px 14px; font-size: 12px; }
-    .conditions-strip .cond-val { font-size: 12px; }
+    .conditions-strip { flex-wrap: wrap; }
+    .cond-item { padding: 8px 10px; min-width: 70px; }
+    .cond-bottom { font-size: 14px; }
+    .cond-item.cond-city-item { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid var(--border-light); }
+    .cond-item.cond-desc-item { display: none; }
+    .chart-tabs { padding: 0 14px; }
+    .chart-tab { padding: 8px 12px; font-size: 11px; }
+    .chart-panel { padding: 12px 14px 10px; }
+    .chart-bar-label { font-size: 10px; }
+    .climate-records { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .record-value { font-size: 20px; }
+    .climate-normals-grid { grid-template-columns: repeat(6, 1fr); }
+    .climate-body { padding: 0 14px 14px; }
   }
   @media (max-width: 420px) {
     .forecast-grid { grid-template-columns: repeat(4, 1fr); }
+    .chart-bar-row { grid-template-columns: repeat(4, 1fr); }
   }
 </style>
 </head>
@@ -397,6 +523,34 @@
     <div class="forecast-grid" id="forecastGrid">
       <div class="forecast-loading"><div class="loading-spinner"></div><span class="forecast-loading-text">Loading forecast…</span></div>
     </div>
+    <div class="forecast-charts" id="forecastCharts" style="display:none">
+      <div class="chart-tabs">
+        <button class="chart-tab active" data-chart="precip">💧 Precipitation</button>
+        <button class="chart-tab" data-chart="humidity">💦 Humidity</button>
+        <button class="chart-tab" data-chart="wind">💨 Wind</button>
+      </div>
+      <div class="chart-panel active" id="chartPrecip"></div>
+      <div class="chart-panel" id="chartHumidity"></div>
+      <div class="chart-panel" id="chartWind"></div>
+    </div>
+  </div>
+
+  <!-- HISTORICAL CLIMATE -->
+  <div class="climate-section" id="climateSection">
+    <div class="climate-header" id="climateToggle">
+      <div class="climate-header-left">
+        <span>📊</span>
+        <span class="climate-title" id="climateTitle">Historical Climate</span>
+        <span class="climate-badge">1895–Present</span>
+      </div>
+      <span class="alerts-chevron open" id="climateChevron">▾</span>
+    </div>
+    <div class="climate-body open" id="climateBody">
+      <div class="climate-records" id="climateRecords"></div>
+      <div class="climate-normals-title">Monthly Average Temperatures <span style="font-weight:400;color:var(--text-muted)">(1991–2020)</span></div>
+      <div class="climate-normals-grid" id="climateGrid"></div>
+      <div class="climate-source">Source: <a href="https://climatology.nelson.wisc.edu/first-order-station-climate-data/wausau-climate/historical-temperatures/" target="_blank" rel="noopener">Wisconsin State Climatology Office</a> &amp; NWS Green Bay · NOAA 1991–2020 Climate Normals</div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -454,7 +608,24 @@ function init(){
   $('btnNext').addEventListener('click',function(){stop();stepFrame(1);});
   $('timeline').addEventListener('click',seekTimeline);
   $('alertsToggle').addEventListener('click',toggleAlerts);
-  $('citySelect').addEventListener('change',function(){currentCity=this.value;loadForecast(currentCity);loadConditions(currentCity);});
+  $('citySelect').addEventListener('change',function(){currentCity=this.value;loadForecast(currentCity);loadConditions(currentCity);renderClimate(currentCity);});
+  // Chart tabs
+  document.querySelectorAll('.chart-tab').forEach(function(tab){
+    tab.addEventListener('click',function(){
+      document.querySelectorAll('.chart-tab').forEach(function(t){t.classList.remove('active');});
+      document.querySelectorAll('.chart-panel').forEach(function(p){p.classList.remove('active');});
+      this.classList.add('active');
+      var target=this.getAttribute('data-chart');
+      if(target==='precip')$('chartPrecip').classList.add('active');
+      else if(target==='humidity')$('chartHumidity').classList.add('active');
+      else if(target==='wind')$('chartWind').classList.add('active');
+    });
+  });
+  $('climateToggle').addEventListener('click',function(){
+    $('climateBody').classList.toggle('open');
+    $('climateChevron').classList.toggle('open');
+  });
+  renderClimate(currentCity);
   setInterval(function(){loadRadarData();loadAlerts();forecastCache={};loadForecast(currentCity);loadConditions(currentCity);},REFRESH);
 }
 
@@ -548,21 +719,34 @@ async function loadConditions(cityName){
     var humid=obs.relativeHumidity&&obs.relativeHumidity.value;humid=humid!==null&&humid!==undefined?Math.round(humid)+'%':'--';
     var windMs=obs.windSpeed&&obs.windSpeed.value;
     var windMph=windMs!==null&&windMs!==undefined?Math.round(windMs*2.237):'--';
+    var windDeg=obs.windDirection&&obs.windDirection.value;
+    var windDirStr=windDeg!==null&&windDeg!==undefined?compassEmoji(windDeg):'';
     var desc=obs.textDescription||'';
     var feelsC=obs.windChill&&obs.windChill.value!==null?obs.windChill.value:(obs.heatIndex&&obs.heatIndex.value!==null?obs.heatIndex.value:tempC);
     var feelsF=feelsC!==null&&feelsC!==undefined?Math.round(feelsC*9/5+32):'--';
 
     strip.innerHTML=
-      '<span class="cond-city">'+esc(cityName)+'</span>'+
-      '<span class="cond-divider"></span>'+
-      '<span><span class="cond-label">Now </span><span class="cond-val">'+tempF+'°F</span></span>'+
-      '<span class="cond-divider"></span>'+
-      '<span><span class="cond-label">Feels </span><span class="cond-val">'+feelsF+'°F</span></span>'+
-      '<span class="cond-divider"></span>'+
-      '<span><span class="cond-label">Humidity </span><span class="cond-val">'+humid+'</span></span>'+
-      '<span class="cond-divider"></span>'+
-      '<span><span class="cond-label">Wind </span><span class="cond-val">'+(windMph!=='--'?windMph+' mph':windMph)+'</span></span>'+
-      (desc?'<span class="cond-divider"></span><span style="font-style:italic;opacity:0.85">'+esc(desc)+'</span>':'');
+      '<div class="cond-item cond-city-item">'+
+        '<span class="cond-top">📍 Current</span>'+
+        '<span class="cond-bottom">'+esc(cityName)+'</span>'+
+      '</div>'+
+      '<div class="cond-item">'+
+        '<span class="cond-top">🌡️ Temp</span>'+
+        '<span class="cond-bottom">'+tempF+'°F</span>'+
+      '</div>'+
+      '<div class="cond-item">'+
+        '<span class="cond-top">🥶 Feels</span>'+
+        '<span class="cond-bottom">'+feelsF+'°F</span>'+
+      '</div>'+
+      '<div class="cond-item">'+
+        '<span class="cond-top">💧 Humidity</span>'+
+        '<span class="cond-bottom">'+humid+'</span>'+
+      '</div>'+
+      '<div class="cond-item">'+
+        '<span class="cond-top">💨 Wind</span>'+
+        '<span class="cond-bottom">'+(windMph!=='--'?windDirStr+' '+windMph+' mph':windMph)+'</span>'+
+      '</div>'+
+      (desc?'<div class="cond-item cond-desc-item"><span class="cond-top">☁️ Conditions</span><span class="cond-bottom-desc">'+esc(desc)+'</span></div>':'');
   }catch(e){
     strip.innerHTML='<span class="conditions-loading" style="opacity:0.6">Current conditions unavailable</span>';
   }
@@ -586,28 +770,34 @@ async function loadForecast(cn){
     if(!per||!per.length)throw new Error('no periods');
     forecastCache[cn].periods=per;
     renderForecast(per);
+    renderCharts(per);
   }catch(e){g.innerHTML='<div class="forecast-error">Unable to load forecast.<br><a href="https://forecast.weather.gov/MapClick.php?textField1=44.96&textField2=-89.63" target="_blank">View on weather.gov →</a></div>';}
 }
 
 function renderForecast(periods){
   var days=buildDays(periods),g=$('forecastGrid');
   g.innerHTML=days.map(function(day,i){
-    var tc=i===0?' today':'';
     var prec=day.precip>0?'<div class="forecast-precip">💧 '+day.precip+'%</div>':'';
-    return '<div class="forecast-day'+tc+'" data-idx="'+i+'">'+
+    return '<div class="forecast-day" data-idx="'+i+'">'+
       '<div class="forecast-day-name">'+esc(day.dayName)+'</div>'+
       '<div class="forecast-icon-wrap">'+day.icon+'</div>'+
       '<div class="forecast-temps"><span class="forecast-high">'+day.high+'°</span>'+(day.low!==null?'<span class="forecast-low">'+day.low+'°</span>':'')+'</div>'+
       '<div class="forecast-desc">'+esc(day.shortDesc)+'</div>'+prec+'</div>';
   }).join('');
 
+  function clearSelection(){
+    g.querySelectorAll('.forecast-day.selected').forEach(function(d){d.classList.remove('selected');});
+  }
+
   // Click to expand detail
   g.querySelectorAll('.forecast-day').forEach(function(el){
     el.addEventListener('click',function(){
       var idx=parseInt(this.getAttribute('data-idx'));
       var existing=g.querySelector('.forecast-detail');
-      if(existing){existing.remove();if(expandedDay===idx){expandedDay=null;return;}}
+      if(existing){existing.remove();clearSelection();if(expandedDay===idx){expandedDay=null;return;}}
       expandedDay=idx;
+      clearSelection();
+      this.classList.add('selected');
       var day=days[idx];
       var detail=document.createElement('div');
       detail.className='forecast-detail';
@@ -619,7 +809,7 @@ function renderForecast(periods){
       var rowEnd=Math.min(Math.ceil((idx+1)/cols)*cols, days.length);
       var anchor=g.children[rowEnd-1]||g.lastElementChild;
       anchor.after(detail);
-      detail.querySelector('.forecast-detail-close').addEventListener('click',function(e){e.stopPropagation();detail.remove();expandedDay=null;});
+      detail.querySelector('.forecast-detail-close').addEventListener('click',function(e){e.stopPropagation();detail.remove();clearSelection();expandedDay=null;});
     });
   });
 }
@@ -648,6 +838,184 @@ function wEmoji(f,isDay){if(!f)return '🌡️';var l=f.toLowerCase();
   if(l.includes('mostly cloudy'))return isDay?'🌥️':'☁️';if(l.includes('partly cloudy')||l.includes('partly sunny'))return isDay?'⛅':'☁️';
   if(l.includes('sunny')||l.includes('clear'))return isDay?'☀️':'🌙';
   return isDay?'🌤️':'🌙';
+}
+
+function renderClimate(cityName){
+  var CLIMATE={
+    'Wausau':{avgAnnual:'43.6°F',months:[{n:'Jan',h:23,l:7},{n:'Feb',h:27,l:10},{n:'Mar',h:38,l:20},{n:'Apr',h:52,l:33},{n:'May',h:65,l:44},{n:'Jun',h:74,l:54},{n:'Jul',h:78,l:59},{n:'Aug',h:76,l:57},{n:'Sep',h:68,l:48},{n:'Oct',h:55,l:37},{n:'Nov',h:40,l:25},{n:'Dec',h:27,l:13}]},
+    'Stevens Point':{avgAnnual:'44.5°F',months:[{n:'Jan',h:24,l:8},{n:'Feb',h:28,l:11},{n:'Mar',h:39,l:21},{n:'Apr',h:54,l:34},{n:'May',h:66,l:45},{n:'Jun',h:76,l:55},{n:'Jul',h:80,l:60},{n:'Aug',h:78,l:58},{n:'Sep',h:69,l:49},{n:'Oct',h:56,l:38},{n:'Nov',h:41,l:26},{n:'Dec',h:28,l:14}]},
+    'Marshfield':{avgAnnual:'43.8°F',months:[{n:'Jan',h:23,l:6},{n:'Feb',h:27,l:9},{n:'Mar',h:38,l:20},{n:'Apr',h:53,l:33},{n:'May',h:66,l:44},{n:'Jun',h:75,l:54},{n:'Jul',h:79,l:59},{n:'Aug',h:77,l:57},{n:'Sep',h:68,l:48},{n:'Oct',h:55,l:37},{n:'Nov',h:40,l:25},{n:'Dec',h:27,l:12}]},
+    'Wisconsin Rapids':{avgAnnual:'44.0°F',months:[{n:'Jan',h:24,l:6},{n:'Feb',h:28,l:10},{n:'Mar',h:39,l:20},{n:'Apr',h:54,l:33},{n:'May',h:66,l:44},{n:'Jun',h:76,l:54},{n:'Jul',h:80,l:59},{n:'Aug',h:78,l:57},{n:'Sep',h:69,l:48},{n:'Oct',h:56,l:37},{n:'Nov',h:41,l:25},{n:'Dec',h:28,l:13}]},
+    'Merrill':{avgAnnual:'42.8°F',months:[{n:'Jan',h:22,l:5},{n:'Feb',h:26,l:8},{n:'Mar',h:37,l:19},{n:'Apr',h:52,l:32},{n:'May',h:65,l:43},{n:'Jun',h:74,l:53},{n:'Jul',h:78,l:58},{n:'Aug',h:76,l:56},{n:'Sep',h:67,l:47},{n:'Oct',h:54,l:36},{n:'Nov',h:39,l:24},{n:'Dec',h:26,l:11}]},
+    'Antigo':{avgAnnual:'42.0°F',months:[{n:'Jan',h:21,l:4},{n:'Feb',h:25,l:7},{n:'Mar',h:36,l:18},{n:'Apr',h:51,l:31},{n:'May',h:64,l:42},{n:'Jun',h:73,l:52},{n:'Jul',h:77,l:57},{n:'Aug',h:75,l:55},{n:'Sep',h:66,l:46},{n:'Oct',h:53,l:35},{n:'Nov',h:38,l:23},{n:'Dec',h:25,l:10}]},
+    'Rhinelander':{avgAnnual:'40.0°F',months:[{n:'Jan',h:20,l:1},{n:'Feb',h:24,l:4},{n:'Mar',h:35,l:15},{n:'Apr',h:50,l:30},{n:'May',h:63,l:41},{n:'Jun',h:73,l:51},{n:'Jul',h:77,l:56},{n:'Aug',h:75,l:54},{n:'Sep',h:66,l:45},{n:'Oct',h:53,l:34},{n:'Nov',h:37,l:21},{n:'Dec',h:24,l:7}]},
+    'Minocqua':{avgAnnual:'39.5°F',months:[{n:'Jan',h:19,l:0},{n:'Feb',h:23,l:3},{n:'Mar',h:34,l:14},{n:'Apr',h:49,l:29},{n:'May',h:62,l:40},{n:'Jun',h:72,l:50},{n:'Jul',h:76,l:55},{n:'Aug',h:74,l:53},{n:'Sep',h:65,l:44},{n:'Oct',h:52,l:33},{n:'Nov',h:36,l:20},{n:'Dec',h:23,l:6}]},
+    'Medford':{avgAnnual:'42.5°F',months:[{n:'Jan',h:21,l:4},{n:'Feb',h:25,l:7},{n:'Mar',h:36,l:18},{n:'Apr',h:52,l:32},{n:'May',h:65,l:43},{n:'Jun',h:74,l:53},{n:'Jul',h:78,l:58},{n:'Aug',h:76,l:55},{n:'Sep',h:67,l:46},{n:'Oct',h:54,l:35},{n:'Nov',h:38,l:23},{n:'Dec',h:25,l:10}]},
+    'Tomahawk':{avgAnnual:'41.0°F',months:[{n:'Jan',h:20,l:2},{n:'Feb',h:24,l:5},{n:'Mar',h:35,l:16},{n:'Apr',h:50,l:30},{n:'May',h:63,l:41},{n:'Jun',h:73,l:51},{n:'Jul',h:77,l:56},{n:'Aug',h:75,l:54},{n:'Sep',h:66,l:45},{n:'Oct',h:53,l:34},{n:'Nov',h:37,l:21},{n:'Dec',h:24,l:8}]},
+    'Shawano':{avgAnnual:'43.5°F',months:[{n:'Jan',h:23,l:7},{n:'Feb',h:27,l:10},{n:'Mar',h:38,l:21},{n:'Apr',h:53,l:33},{n:'May',h:65,l:44},{n:'Jun',h:75,l:54},{n:'Jul',h:79,l:59},{n:'Aug',h:77,l:57},{n:'Sep',h:68,l:48},{n:'Oct',h:56,l:37},{n:'Nov',h:41,l:25},{n:'Dec',h:27,l:13}]},
+    'Plover':{avgAnnual:'44.0°F',months:[{n:'Jan',h:24,l:7},{n:'Feb',h:28,l:10},{n:'Mar',h:39,l:21},{n:'Apr',h:54,l:34},{n:'May',h:66,l:45},{n:'Jun',h:76,l:55},{n:'Jul',h:80,l:60},{n:'Aug',h:78,l:58},{n:'Sep',h:69,l:49},{n:'Oct',h:56,l:38},{n:'Nov',h:41,l:26},{n:'Dec',h:28,l:13}]}
+  };
+
+  var data=CLIMATE[cityName]||CLIMATE['Wausau'];
+  var today=new Date();
+  var dateStr=today.toLocaleDateString('en-US',{month:'long',day:'numeric',timeZone:'America/Chicago'});
+
+  $('climateTitle').textContent=cityName+' Historical Climate';
+
+  // Render monthly grid (static per city)
+  $('climateGrid').innerHTML=data.months.map(function(m){
+    return '<div class="climate-month"><div class="climate-month-name">'+m.n+'</div><div class="climate-month-high">'+m.h+'°</div><div class="climate-month-low">'+m.l+'°</div></div>';
+  }).join('');
+
+  // Show loading state for daily records
+  $('climateRecords').innerHTML=
+    '<div class="climate-record-card record-hot"><div class="record-icon">🔥</div><div class="record-label">Record High · '+dateStr+'</div><div class="record-value" style="color:var(--text-muted);font-size:14px">Loading…</div><div class="record-detail">Wausau station</div></div>'+
+    '<div class="climate-record-card record-cold"><div class="record-icon">🥶</div><div class="record-label">Record Low · '+dateStr+'</div><div class="record-value" style="color:var(--text-muted);font-size:14px">Loading…</div><div class="record-detail">Wausau station</div></div>'+
+    '<div class="climate-record-card record-avg"><div class="record-icon">📈</div><div class="record-label">Annual Average</div><div class="record-value">'+data.avgAnnual+'</div><div class="record-detail">1991–2020</div></div>';
+
+  // Fetch today's daily climate report from NWS (CLI product for Wausau/AUW)
+  loadDailyRecords(dateStr,data.avgAnnual);
+}
+
+async function loadDailyRecords(dateStr,avgAnnual){
+  try{
+    // Get latest CLI product for Wausau (AUW)
+    var r=await fetch('https://api.weather.gov/products/types/CLI/locations/AUW',{headers:NWS_H});
+    var d=await r.json();
+    var products=d['@graph']||[];
+    if(!products.length)throw new Error('no products');
+
+    // Fetch the most recent CLI report
+    var latestUrl=products[0].id||products[0]['@id'];
+    if(latestUrl&&!latestUrl.startsWith('http'))latestUrl='https://api.weather.gov/products/'+latestUrl;
+    var pr=await fetch(latestUrl,{headers:NWS_H});
+    var pd=await pr.json();
+    var text=pd.productText||'';
+
+    // Parse record high and low from CLI text
+    // Format: MAXIMUM  xx  time  RECORD_HIGH  YEAR  NORMAL  ...
+    //         MINIMUM  xx  time  RECORD_LOW   YEAR  NORMAL  ...
+    var recHigh='--', recHighYear='', recLow='--', recLowYear='', normalHigh='--', normalLow='--';
+
+    var lines=text.split('\n');
+    for(var i=0;i<lines.length;i++){
+      var line=lines[i].trim();
+      if(line.match(/^\s*MAXIMUM/i)){
+        var parts=line.split(/\s+/);
+        // parts: MAXIMUM, observed, time, [AM/PM], record, year, normal, ...
+        for(var j=0;j<parts.length;j++){
+          if(parts[j].match(/^-?\d+$/)&&j>2){
+            if(!recHigh||recHigh==='--'){recHigh=parts[j]+'°F';recHighYear=parts[j+1]||'';break;}
+          }
+        }
+        // Try regex approach
+        var m=line.match(/MAXIMUM\s+(-?\d+)\s+.*?\s+(-?\d+)\s+(\d{4})\s+(-?\d+)/i);
+        if(m){recHigh=m[2]+'°F';recHighYear=m[3];normalHigh=m[4]+'°F';}
+      }
+      if(line.match(/^\s*MINIMUM/i)){
+        var m2=line.match(/MINIMUM\s+(-?\d+)\s+.*?\s+(-?\d+)\s+(\d{4})\s+(-?\d+)/i);
+        if(m2){recLow=m2[2]+'°F';recLowYear=m2[3];normalLow=m2[4]+'°F';}
+      }
+    }
+
+    $('climateRecords').innerHTML=
+      '<div class="climate-record-card record-hot"><div class="record-icon">🔥</div><div class="record-label">Record High · '+dateStr+'</div><div class="record-value">'+recHigh+'</div><div class="record-detail">Set in '+recHighYear+(normalHigh!=='--'?' · Normal: '+normalHigh:'')+'</div></div>'+
+      '<div class="climate-record-card record-cold"><div class="record-icon">🥶</div><div class="record-label">Record Low · '+dateStr+'</div><div class="record-value">'+recLow+'</div><div class="record-detail">Set in '+recLowYear+(normalLow!=='--'?' · Normal: '+normalLow:'')+'</div></div>'+
+      '<div class="climate-record-card record-avg"><div class="record-icon">📈</div><div class="record-label">Annual Average</div><div class="record-value">'+avgAnnual+'</div><div class="record-detail">1991–2020</div></div>';
+
+  }catch(e){
+    console.error('CLI fetch error:',e);
+    // Fallback: keep loading state but update text
+    var cards=$('climateRecords').querySelectorAll('.record-value');
+    if(cards.length>=2){cards[0].textContent='Unavailable';cards[1].textContent='Unavailable';}
+  }
+}
+
+// Compass emoji from degrees (for current conditions — NWS observations give degrees)
+function compassEmoji(deg){
+  if(deg==null)return '';
+  // Arrows point the direction wind is blowing TO (opposite of origin)
+  // NWS gives direction wind is FROM, so we add 180
+  var d=((deg+180)%360);
+  if(d>=337.5||d<22.5)return '⬆️';
+  if(d>=22.5&&d<67.5)return '↗️';
+  if(d>=67.5&&d<112.5)return '➡️';
+  if(d>=112.5&&d<157.5)return '↘️';
+  if(d>=157.5&&d<202.5)return '⬇️';
+  if(d>=202.5&&d<247.5)return '↙️';
+  if(d>=247.5&&d<292.5)return '⬅️';
+  if(d>=292.5&&d<337.5)return '↖️';
+  return '';
+}
+
+// Compass emoji from abbreviation (for forecast — NWS forecast gives N, NW, SSE, etc.)
+function compassFromAbbr(abbr){
+  if(!abbr)return '';
+  var map={
+    'N':'⬇️','NNE':'⬇️','NE':'↙️','ENE':'⬅️',
+    'E':'⬅️','ESE':'⬅️','SE':'↖️','SSE':'⬆️',
+    'S':'⬆️','SSW':'⬆️','SW':'↗️','WSW':'➡️',
+    'W':'➡️','WNW':'➡️','NW':'↘️','NNW':'⬇️'
+  };
+  return map[abbr.toUpperCase()]||'';
+}
+
+function renderCharts(periods){
+  var chartsEl=$('forecastCharts');
+  chartsEl.style.display='block';
+
+  // Build data from ALL periods (include first period whether Tonight or Today)
+  var chartDays=[];
+  var i=0;
+
+  // Include the first period (Tonight or Today) so charts match the forecast above
+  while(i<periods.length&&chartDays.length<7){
+    var p=periods[i];
+    var precip=0;
+    if(p.probabilityOfPrecipitation&&p.probabilityOfPrecipitation.value!=null)precip=p.probabilityOfPrecipitation.value;
+    var humidity=0;
+    if(p.relativeHumidity&&p.relativeHumidity.value!=null)humidity=p.relativeHumidity.value;
+    var wind=0;
+    var ws=p.windSpeed||'';
+    var wm=ws.match(/(\d+)/);if(wm)wind=parseInt(wm[1]);
+    var windDir=p.windDirection||'';
+
+    var name=dayAbbr(p.name);
+
+    chartDays.push({
+      name:name,
+      precip:precip,
+      humidity:humidity,
+      wind:wind,
+      windDir:windDir
+    });
+
+    // Skip night period if we used a daytime one (pair them)
+    if(p.isDaytime)i+=2;
+    else i+=1;
+  }
+
+  function buildBarChart(data,key,unit,cssClass,showSub){
+    if(!data.length)return '<div class="chart-empty">No data available</div>';
+    var maxVal=Math.max.apply(null,data.map(function(d){return d[key]||0;}));
+    if(maxVal===0)maxVal=1;
+    return '<div class="chart-bar-row">'+data.map(function(d){
+      var val=d[key]||0;
+      var h=Math.max(3,Math.round((val/maxVal)*55));
+      var subLabel='';
+      if(showSub&&d.windDir)subLabel='<div class="chart-bar-sub">'+compassFromAbbr(d.windDir)+'</div>';
+      return '<div class="chart-bar-col">'+
+        '<div class="chart-bar-label">'+val+unit+'</div>'+
+        subLabel+
+        '<div class="chart-bar-wrap"><div class="chart-bar '+cssClass+'" style="height:'+h+'px"></div></div>'+
+        '<div class="chart-bar-day">'+esc(d.name)+'</div>'+
+      '</div>';
+    }).join('')+'</div>';
+  }
+
+  $('chartPrecip').innerHTML=buildBarChart(chartDays,'precip','%','precip',false);
+  $('chartHumidity').innerHTML=buildBarChart(chartDays,'humidity','%','humidity',false);
+  $('chartWind').innerHTML=buildBarChart(chartDays,'wind',' mph','wind',true);
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else setTimeout(init,50);
